@@ -42,18 +42,12 @@ class App extends Component {
 
   render() {
 
-    let charCompo = null;
-    if(this.state.charArrayLength > 0){
-      charCompo = (<ul>
-             {this.state.char.map((c ,index) =>{
-               return( <CharComponents 
-                key={index} 
-                click={() => this.deletePersonHandler(index)}
-                value={c}/>)
-             } )}
-          </ul>
-      );
-    }
+    const charCompo = this.state.char.map((c ,index) => {
+      return <CharComponents 
+        value={c} 
+        key={index}
+        clicked={() => this.deletePersonHandler(index)} />;
+    });
     
     return (
       <div className="App">
@@ -64,7 +58,7 @@ class App extends Component {
         <Validation length={this.state.length} />
         </div>
 
-        <div className="listComponenet">
+        <div>
         {charCompo}
         </div>
 
